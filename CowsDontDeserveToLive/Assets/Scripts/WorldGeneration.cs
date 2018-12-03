@@ -71,16 +71,16 @@ public class WorldGeneration : MonoBehaviour
 
                                 var remaining = (noise * 100) - Math.Truncate(noise * 100);
 
-                                // 5%
-                                if (remaining >= 0.95 && !hasBlockAbove)
+                                // 3%
+                                if (remaining >= 0.97 && !hasBlockAbove)
                                 {
                                     var alter = Instantiate(AlterPrefab);
                                     alter.transform.position = CollisionTilemap.CellToWorld(new Vector3Int(x, y + 1, 0));
                                     alter.transform.Translate(0.5f, 0.5f, 0);
                                 }
 
-                                //15%
-                                if (remaining % 1 >= 0.85 && !hasBlockAbove)
+                                //10%
+                                if (remaining % 1 >= 0.9 && !hasBlockAbove)
                                 {
                                     var animal = Instantiate(AnimalPrefab);
                                     animal.transform.position = CollisionTilemap.CellToWorld(new Vector3Int(x, y + 1, 0));
