@@ -72,7 +72,7 @@ public class WorldGeneration : MonoBehaviour
                                 var remaining = (noise * 100) - Math.Truncate(noise * 100);
 
                                 // 3%
-                                if (remaining >= 0.97 && !hasBlockAbove)
+                                if (remaining >= 0 && !hasBlockAbove)
                                 {
                                     var alter = Instantiate(AlterPrefab);
                                     alter.transform.position = CollisionTilemap.CellToWorld(new Vector3Int(x, y + 1, 0));
@@ -80,11 +80,14 @@ public class WorldGeneration : MonoBehaviour
                                 }
 
                                 //10%
-                                if (remaining % 1 >= 0.9 && !hasBlockAbove)
+                                if (remaining >= 0 && !hasBlockAbove)
                                 {
-                                    var animal = Instantiate(AnimalPrefab);
-                                    animal.transform.position = CollisionTilemap.CellToWorld(new Vector3Int(x, y + 1, 0));
-                                    animal.transform.Translate(0.5f, 0.5f, 0);
+                                    for (var i = 0; i < 10; i++)
+                                    {
+                                        var animal = Instantiate(AnimalPrefab);
+                                        animal.transform.position = CollisionTilemap.CellToWorld(new Vector3Int(x, y + 1, 0));
+                                        animal.transform.Translate(0.5f, 0.5f, 0);
+                                    }
                                 }
                             }
                         }
